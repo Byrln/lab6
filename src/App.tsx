@@ -1,19 +1,21 @@
-
-// Үндсэн апп компонент
-import './App.css'
-import { ProductList } from './components/ProductList'
+import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './page/Login';
+import Home from './page/Home';
 
 function App() {
-  // Бүтээгдэхүүний жагсаалтыг харуулах үндсэн хуудас
   return (
-    <>
-    <div className="min-h-screen bg-background text-foreground">
-      <main>
-        <ProductList />
-      </main>
-    </div>
-    </>
-  )
+    <BrowserRouter>
+      <div className="min-h-screen min-w-screen bg-background flex items-center justify-center">
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
